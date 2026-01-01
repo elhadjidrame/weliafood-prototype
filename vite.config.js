@@ -28,6 +28,7 @@ export default defineConfig({
         cgv: resolve(__dirname, 'src/pages/cgv.html'),
         confidentialite: resolve(__dirname, 'src/pages/confidentialite.html'),
         cookies: resolve(__dirname, 'src/pages/cookies.html'),
+        notFound: resolve(__dirname, 'src/pages/404.html'),
       },
     },
   },

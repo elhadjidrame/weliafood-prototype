@@ -5,6 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Cookies - Weliafood</title>
+    <meta name="description" content="Gérez vos préférences de cookies sur le site Weliafood.">
+    <link rel="canonical" href="https://elhadjidrame.github.io/weliafood-prototype/cookies.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gestion des Cookies - Weliafood">
+    <meta property="og:url" content="https://elhadjidrame.github.io/weliafood-prototype/cookies.html">
+    <meta property="og:image" content="https://elhadjidrame.github.io/weliafood-prototype/images/og/og-default.png">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "Organization", "name": "Weliafood", "url": "https://elhadjidrame.github.io/weliafood-prototype/", "logo": "https://elhadjidrame.github.io/weliafood-prototype/images/logo.svg" },
+        { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "item": "https://elhadjidrame.github.io/weliafood-prototype/", "name": "Accueil" }, { "@type": "ListItem", "position": 2, "item": "https://elhadjidrame.github.io/weliafood-prototype/cookies.html", "name": "Cookies" } ] }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="/styles/tokens.css">
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/base.css">
@@ -29,15 +47,28 @@
         </header>
 
         <main class="main">
-            <div class="container legal-content">
-                <h1>Gestion des Cookies</h1>
+            <section class="section">
+                <div class="container container--narrow">
+                    <h1>Gestion des Cookies</h1>
+                    <p>Chez Weliafood, nous respectons votre vie privée...</p>
+                    <!-- Contenu explicatif existant ou placeholder -->
 
-                <h2>1. Qu'est-ce qu'un cookie ?</h2>
-                <p>Un cookie est un petit fichier texte déposé sur votre terminal lors de la visite d'un site.</p>
+                    <h2>1. Qu'est-ce qu'un cookie ?</h2>
+                    <p>Un cookie est un petit fichier texte déposé sur votre terminal lors de la visite d'un site.</p>
 
-                <h2>2. Cookies utilisés</h2>
-                <p>Nous utilisons uniquement des cookies techniques nécessaires au fonctionnement du site.</p>
-            </div>
+                    <h2>2. Cookies utilisés</h2>
+                    <p>Nous utilisons uniquement des cookies techniques nécessaires au fonctionnement du site.</p>
+
+                    <div class="cookie-reset"
+                        style="margin-top: 3rem; padding: 2rem; background: var(--color-neutral-100); border-radius: var(--radius-md);">
+                        <h2>Modifier vos préférences</h2>
+                        <p class="mb-4">Vous pouvez à tout moment modifier vos choix concernant les cookies.</p>
+                        <button type="button" class="btn btn--secondary" id="reset-cookies">
+                            Réinitialiser mes préférences cookies
+                        </button>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">

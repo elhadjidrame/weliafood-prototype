@@ -1,0 +1,11 @@
+# Robots.txt pour Weliafood Prototype
+# https://elhadjidrame.github.io/weliafood-prototype/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://elhadjidrame.github.io/weliafood-prototype/sitemap.xml
+
+# Bloquer les ressources non pertinentes
+Disallow: /assets/
