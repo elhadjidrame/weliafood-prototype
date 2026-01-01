@@ -1,0 +1,48 @@
+/* About Page Styles */
+
+/* Hero Section */
+.page-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* Icon Text Grid */
+.icon-text-grid {
+    align-items: center;
+    gap: 4rem;
+}
+
+@media (max-width: 768px) {
+    .icon-text-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Values Cards */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.text-4xl {
+    font-size: 2.5rem;
+}
+
+.font-serif {
+    font-family: var(--font-serif);
+}
+
+.font-bold {
+    font-weight: 700;
+}
