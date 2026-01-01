@@ -1,0 +1,59 @@
+/**
+ * BADGES
+ * Labels, tags, status
+ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.4;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+/* Variantes */
+.badge--primary {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-700);
+}
+
+.badge--secondary {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-700);
+}
+
+.badge--success {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.badge--warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.badge--error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.badge--info {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+/* Outlined */
+.badge--outlined {
+    background-color: transparent;
+    border: 1px solid currentColor;
+}
+
+/* Sizes */
+.badge--lg {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+}

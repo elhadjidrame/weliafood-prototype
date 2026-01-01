@@ -1,0 +1,347 @@
+/**
+ * LAYOUT
+ * Container, Grid, Header, Footer
+ */
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: var(--space-8);
+        padding-right: var(--space-8);
+    }
+}
+
+/* ========================================
+   GRID
+   ======================================== */
+
+.grid {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.grid--2 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.grid--3 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.grid--4 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 640px) {
+    .grid--2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid--3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid--4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid--3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid--4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-600);
+}
+
+.header__logo img {
+    height: 40px;
+    width: auto;
+}
+
+.header__nav {
+    display: none;
+}
+
+.header__nav-list {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header__nav-link {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.header__nav-link:hover,
+.header__nav-link.is-active {
+    color: var(--color-primary-600);
+    text-decoration: none;
+}
+
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.header__menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-text-primary);
+}
+
+.header__menu-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (min-width: 1024px) {
+    .header__nav {
+        display: block;
+    }
+
+    .header__menu-toggle {
+        display: none;
+    }
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg-primary);
+    z-index: var(--z-fixed);
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+}
+
+.mobile-nav.is-open {
+    transform: translateX(0);
+}
+
+.mobile-nav__list {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+}
+
+.mobile-nav__link {
+    display: block;
+    padding: var(--space-4) 0;
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    background-color: var(--color-neutral-900);
+    color: var(--color-neutral-300);
+    padding: var(--space-12) 0 var(--space-6);
+    margin-top: auto;
+}
+
+.footer__grid {
+    display: grid;
+    gap: var(--space-8);
+    margin-bottom: var(--space-10);
+}
+
+.footer__section-title {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-0);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer__list li {
+    margin-bottom: var(--space-2);
+}
+
+.footer__link {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-400);
+    transition: color var(--transition-fast);
+}
+
+.footer__link:hover {
+    color: var(--color-neutral-0);
+    text-decoration: none;
+}
+
+.footer__bottom {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-neutral-700);
+    text-align: center;
+}
+
+.footer__copyright {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-500);
+}
+
+@media (min-width: 768px) {
+    .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer__grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+}
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
+
+.main {
+    flex: 1;
+    padding: var(--space-8) 0;
+}
+
+/* Page wrapper pour sticky footer */
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ========================================
+   SECTIONS
+   ======================================== */
+
+.section {
+    padding: var(--space-12) 0;
+}
+
+.section--alt {
+    background-color: var(--color-bg-secondary);
+}
+
+.section__header {
+    text-align: center;
+    margin-bottom: var(--space-10);
+}
+
+.section__title {
+    margin-bottom: var(--space-4);
+}
+
+.section__description {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   BREADCRUMBS
+   ======================================== */
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+}
+
+.breadcrumbs__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.breadcrumbs__link {
+    color: var(--color-text-secondary);
+}
+
+.breadcrumbs__link:hover {
+    color: var(--color-primary-600);
+}
+
+.breadcrumbs__separator {
+    color: var(--color-text-muted);
+}
+
+.breadcrumbs__current {
+    color: var(--color-text-primary);
+}

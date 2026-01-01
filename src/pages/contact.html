@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contactez Weliafood pour toute demande de devis ou d'information sur nos produits alimentaires professionnels.">
+    <title>Contact - Weliafood</title>
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles/tokens.css">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/components/buttons.css">
+    <link rel="stylesheet" href="/styles/components/forms.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="container header__inner">
+                <a href="index.html" class="header__logo">
+                    <img src="/images/logo.svg" alt="Weliafood" width="40" height="40">
+                    <span>Weliafood</span>
+                </a>
+                <nav class="header__nav" aria-label="Navigation principale">
+                    <ul class="header__nav-list">
+                        <li><a href="index.html" class="header__nav-link">Accueil</a></li>
+                        <li><a href="categorie.html" class="header__nav-link">Catalogue</a></li>
+                        <li><a href="a-propos.html" class="header__nav-link">À propos</a></li>
+                        <li><a href="contact.html" class="header__nav-link is-active">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <a href="contact.html" class="btn btn--primary btn--sm">Demander un devis</a>
+                    <button class="header__menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <nav class="mobile-nav" aria-label="Navigation mobile">
+                <ul class="mobile-nav__list">
+                    <li><a href="index.html" class="mobile-nav__link">Accueil</a></li>
+                    <li><a href="categorie.html" class="mobile-nav__link">Catalogue</a></li>
+                    <li><a href="a-propos.html" class="mobile-nav__link">À propos</a></li>
+                    <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <div class="container">
+                <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+                    <span class="breadcrumbs__item">
+                        <a href="index.html" class="breadcrumbs__link">Accueil</a>
+                        <span class="breadcrumbs__separator">›</span>
+                    </span>
+                    <span class="breadcrumbs__item">
+                        <span class="breadcrumbs__current" aria-current="page">Contact</span>
+                    </span>
+                </nav>
+
+                <header class="page-header">
+                    <h1>Contactez-nous</h1>
+                    <p class="page-header__description">
+                        Une question ? Une demande de devis ? Notre équipe est à votre écoute.
+                    </p>
+                </header>
+
+                <div class="contact-grid"
+                    style="display: grid; grid-template-columns: 1fr; gap: var(--space-8); padding-bottom: var(--space-12);">
+                    <!-- Note: Inline style used for simplicity as contact.css is not defined, 
+               in a real project this should be in a CSS file. -->
+                    <style>
+                        @media (min-width: 768px) {
+                            .contact-grid {
+                                grid-template-columns: 2fr 1fr;
+                            }
+                        }
+                    </style>
+
+                    <!-- Formulaire -->
+                    <section class="contact-form-section">
+                        <h2>Envoyez-nous un message</h2>
+                        <form class="contact-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name" class="form-label form-label--required">Nom complet</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label form-label--required">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject" class="form-label form-label--required">Sujet</label>
+                                <select id="subject" name="subject" class="form-select" required>
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="devis">Demande de devis</option>
+                                    <option value="info">Information produit</option>
+                                    <option value="partenariat">Partenariat</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label form-label--required">Message</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="5"
+                                    required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" id="consent" name="consent" class="form-check-input"
+                                        required>
+                                    <label for="consent" class="form-check-label">
+                                        J'accepte que mes données soient utilisées pour traiter ma demande conformément
+                                        à la
+                                        <a href="confidentialite.html">politique de confidentialité</a>.
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn--primary btn--lg">Envoyer le message</button>
+                        </form>
+                    </section>
+
+                    <!-- Coordonnées -->
+                    <aside class="contact-info-section">
+                        <h2>Nos coordonnées</h2>
+                        <address>
+                            <p><strong>Weliafood</strong></p>
+                            <p>123 Rue du Commerce<br>75001 Paris, France</p>
+                            <p>Tél : <a href="tel:+33100000000">01 00 00 00 00</a></p>
+                            <p>Email : <a href="mailto:contact@weliafood.com">contact@weliafood.com</a></p>
+                        </address>
+
+                        <h3 style="margin-top: var(--space-6);">Horaires</h3>
+                        <p>Lundi - Vendredi : 9h - 18h<br>Samedi - Dimanche : Fermé</p>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__grid">
+                    <div class="footer__section">
+                        <div class="footer__logo"><span>Weliafood</span></div>
+                        <p class="footer__description">Votre partenaire grossiste alimentaire de confiance.</p>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__section-title">Navigation</h4>
+                        <ul class="footer__list">
+                            <li><a href="index.html" class="footer__link">Accueil</a></li>
+                            <li><a href="categorie.html" class="footer__link">Catalogue</a></li>
+                            <li><a href="a-propos.html" class="footer__link">À propos</a></li>
+                            <li><a href="contact.html" class="footer__link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__section-title">Légal</h4>
+                        <ul class="footer__list">
+                            <li><a href="mentions-legales.html" class="footer__link">Mentions légales</a></li>
+                            <li><a href="cgv.html" class="footer__link">CGV</a></li>
+                            <li><a href="confidentialite.html" class="footer__link">Confidentialité</a></li>
+                            <li><a href="cookies.html" class="footer__link">Cookies</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__section-title">Contact</h4>
+                        <address class="footer__contact">
+                            <p>123 Rue du Commerce<br>75001 Paris</p>
+                            <p><a href="mailto:contact@weliafood.com" class="footer__link">contact@weliafood.com</a></p>
+                        </address>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">© 2026 Weliafood. Tous droits réservés.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/scripts/main.js"></script>
+</body>
+
+</html>

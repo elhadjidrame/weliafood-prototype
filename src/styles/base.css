@@ -1,0 +1,112 @@
+/**
+ * STYLES DE BASE
+ * Typographie et éléments HTML
+ */
+
+body {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+}
+
+/* Titres */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-6);
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-5);
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-4);
+}
+
+h4 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-3);
+}
+
+h5 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+}
+
+h6 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-2);
+}
+
+/* Paragraphes */
+p {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Liens */
+a {
+    color: var(--color-primary-600);
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary-700);
+    text-decoration: underline;
+}
+
+/* Listes */
+ul,
+ol {
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-4);
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+li {
+    margin-bottom: var(--space-2);
+}
+
+/* Media queries typographie responsive */
+@media (min-width: 768px) {
+    h1 {
+        font-size: var(--font-size-5xl);
+    }
+
+    h2 {
+        font-size: var(--font-size-4xl);
+    }
+
+    h3 {
+        font-size: var(--font-size-3xl);
+    }
+}
+
+@media (min-width: 1024px) {
+    h1 {
+        font-size: var(--font-size-6xl);
+    }
+}

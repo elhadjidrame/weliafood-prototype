@@ -1,0 +1,44 @@
+/**
+ * LEGAL PAGES STYLES
+ * (Mentions légales, CGV, Confidentialité, Cookies)
+ */
+
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-content h2 {
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.legal-content h2:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.legal-content p,
+.legal-content li {
+    color: var(--color-text-secondary);
+}
+
+.legal-content ul,
+.legal-content ol {
+    margin-bottom: var(--space-6);
+}
+
+.legal-notice {
+    background-color: var(--color-bg-secondary);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-8);
+}
+
+.legal-notice p {
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}

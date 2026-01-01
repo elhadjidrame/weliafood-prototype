@@ -1,0 +1,17 @@
+/**
+ * CATEGORY PAGE STYLES
+ */
+
+.page-header {
+    margin-bottom: var(--space-10);
+}
+
+.page-header__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 640px;
+}
+
+.products-section {
+    margin-bottom: var(--space-12);
+}

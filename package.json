@@ -1,0 +1,20 @@
+{
+  "name": "weliafood-prototype",
+  "version": "1.0.0",
+  "description": "Prototype e-commerce statique Weliafood",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write \"src/**/*.{html,css,js}\"",
+    "format:check": "prettier --check \"src/**/*.{html,css,js}\""
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-html": "^8.0.0",
+    "prettier": "^3.2.0",
+    "vite": "^5.4.0"
+  }
+}
