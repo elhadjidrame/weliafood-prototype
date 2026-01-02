@@ -114,8 +114,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div class="page">
-        <header class="header">
+    <header class="header">
             <div class="header__container">
                 <a href="index.html" class="header__logo">
                     WeliaFood<span class="header__logo-dot">.</span>
@@ -139,65 +138,91 @@
             </div>
         </header>
 
-        <!-- Page Header -->
-        <header class="page-header">
-            <h1>Notre catalogue</h1>
-            <p class="page-header__description">
-                Découvrez notre gamme complète de produits alimentaires professionnels.
-            </p>
-        </header>
+        <main class="main">
+            <!-- Page Header -->
+            <div class="container">
+                <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+                    <span class="breadcrumbs__item">
+                        <a href="index.html" class="breadcrumbs__link">Accueil</a>
+                        <span class="breadcrumbs__separator">›</span>
+                    </span>
+                    <span class="breadcrumbs__item">
+                        <span class="breadcrumbs__current" aria-current="page">Catalogue</span>
+                    </span>
+                </nav>
 
-        <!-- Products Grid -->
-        <section class="products-section">
-            <div class="grid grid--3">
-                <article class="card card--bordered">
-                    <div class="card__image">
-                        <img src="/images/products/product-1.jpg" alt="Produit 1" loading="lazy">
-                    </div>
-                    <div class="card__content">
-                        <span class="card__category">Catégorie exemple</span>
-                        <h2 class="card__title"><a href="produit-1.html">Produit 1</a></h2>
-                        <p class="card__description">Description du produit 1. Placeholder.</p>
-                        <div class="card__footer">
-                            <span class="card__price">Sur devis</span>
-                            <a href="produit-1.html" class="btn btn--secondary btn--sm">Voir</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card card--bordered">
-                    <div class="card__image">
-                        <img src="/images/products/product-2.jpg" alt="Produit 2" loading="lazy">
-                    </div>
-                    <div class="card__content">
-                        <span class="card__category">Catégorie exemple</span>
-                        <h2 class="card__title"><a href="produit-2.html">Produit 2</a></h2>
-                        <p class="card__description">Description du produit 2. Placeholder.</p>
-                        <div class="card__footer">
-                            <span class="card__price">Sur devis</span>
-                            <a href="produit-2.html" class="btn btn--secondary btn--sm">Voir</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card card--bordered">
-                    <div class="card__image">
-                        <img src="/images/products/product-3.jpg" alt="Produit 3" loading="lazy">
-                    </div>
-                    <div class="card__content">
-                        <span class="card__category">Catégorie exemple</span>
-                        <h2 class="card__title"><a href="produit-3.html">Produit 3</a></h2>
-                        <p class="card__description">Description du produit 3. Placeholder.</p>
-                        <div class="card__footer">
-                            <span class="card__price">Sur devis</span>
-                            <a href="produit-3.html" class="btn btn--secondary btn--sm">Voir</a>
-                        </div>
-                    </div>
-                </article>
+                <header class="page-header">
+                    <h1>Notre catalogue d'épicerie fine</h1>
+                    <p class="page-header__description">
+                        Découvrez notre sélection de produits premium pour les professionnels de la restauration.
+                    </p>
+                </header>
             </div>
-        </section>
-    </div>
-    </main>
+
+            <!-- Products Grid -->
+            <section class="products-section">
+                <div class="container">
+                    <div class="grid grid--3">
+                        <article class="card card--bordered">
+                            <div class="card__image">
+                                <img src="/images/products/product-1.jpg"
+                                     alt="Huile d'olive extra vierge premium Italie - Bidon 5L"
+                                     width="400"
+                                     height="300"
+                                     loading="lazy">
+                            </div>
+                            <div class="card__content">
+                                <span class="card__category">Huiles</span>
+                                <h2 class="card__title"><a href="produit-1.html">Huile d'Olive Extra Vierge Premium</a></h2>
+                                <p class="card__description">Origine Italie. Première pression à froid. Fruité vert intense. Bidon 5L.</p>
+                                <div class="card__footer">
+                                    <span class="card__price">Sur devis</span>
+                                    <a href="produit-1.html" class="btn btn--secondary btn--sm">Voir détails</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card card--bordered">
+                            <div class="card__image">
+                                <img src="/images/products/product-2.jpg"
+                                     alt="Vinaigre balsamique de Modène IGP vieilli 3 ans"
+                                     width="400"
+                                     height="300"
+                                     loading="lazy">
+                            </div>
+                            <div class="card__content">
+                                <span class="card__category">Vinaigres</span>
+                                <h2 class="card__title"><a href="produit-2.html">Vinaigre Balsamique de Modène IGP</a></h2>
+                                <p class="card__description">Vieilli 3 ans en fût de chêne. Texture sirupeuse. Idéal dressages et marinades.</p>
+                                <div class="card__footer">
+                                    <span class="card__price">Sur devis</span>
+                                    <a href="produit-2.html" class="btn btn--secondary btn--sm">Voir détails</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card card--bordered">
+                            <div class="card__image">
+                                <img src="/images/products/product-3.jpg"
+                                     alt="Pâtes artisanales Penne Rigate tréfilées au bronze"
+                                     width="400"
+                                     height="300"
+                                     loading="lazy">
+                            </div>
+                            <div class="card__content">
+                                <span class="card__category">Pâtes</span>
+                                <h2 class="card__title"><a href="produit-3.html">Penne Rigate Bronze Artisanal</a></h2>
+                                <p class="card__description">Semoule de blé dur italien. Tréfilage au bronze. Séchage lent 48h.</p>
+                                <div class="card__footer">
+                                    <span class="card__price">Sur devis</span>
+                                    <a href="produit-3.html" class="btn btn--secondary btn--sm">Voir détails</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
 
     <footer class="footer">
         <div class="container">
@@ -237,7 +262,7 @@
             </div>
         </div>
     </footer>
-    </div>
+
     <script type="module" src="/scripts/main.js"></script>
 </body>
 
