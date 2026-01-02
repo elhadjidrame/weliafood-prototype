@@ -1,31 +1,249 @@
 /**
- * Cookie Consent Manager
- * Gestion du consentement RGPD
- *
- * NOTE LEGALE: Les implémentations RGPD constituent une base technique, non un avis juridique.
- *
- * Note: Ce module gère uniquement l'UI et le stockage du consentement.
- * L'activation réelle des scripts tracking sera faite en Sprint 4.
+ * Cookie Consent Manager - Sprint 4
+ * Gestion du consentement RGPD avec Consent Mode v2
  */
 
 const CONSENT_KEY = 'weliafood_cookie_consent';
-const CONSENT_VERSION = '1.0';
+const CONSENT_VERSION = '1.1';
 
-// Types de cookies
-const COOKIE_TYPES = {
-    necessary: true,      // Toujours actif
-    analytics: false,     // Google Analytics
-    marketing: false,     // Google Ads, Meta Pixel
+// Types de cookies et mapping Consent Mode
+const CONSENT_MAPPING = {
+    necessary: {
+        required: true,
+        consentMode: ['security_storage']
+    },
+    analytics: {
+        required: false,
+        consentMode: ['analytics_storage']
+    },
+    marketing: {
+        required: false,
+        consentMode: ['ad_storage', 'ad_user_data', 'ad_personalization']
+    },
+    functional: {
+        required: false,
+        consentMode: ['functionality_storage', 'personalization_storage']
+    }
 };
 
 /**
- * Injecte le HTML du bandeau dans la page
+ * Met à jour le Consent Mode de Google
+ */
+function updateGoogleConsent(consent) {
+    if (typeof gtag !== 'function') {
+        console.warn('gtag not available');
+        return;
+    }
+
+    // Construire l'objet de consentement
+    const consentUpdate = {
+        'analytics_storage': consent.analytics ? 'granted' : 'denied',
+        'ad_storage': consent.marketing ? 'granted' : 'denied',
+        'ad_user_data': consent.marketing ? 'granted' : 'denied',
+        'ad_personalization': consent.marketing ? 'granted' : 'denied',
+        'functionality_storage': consent.functional ? 'granted' : 'denied',
+        'personalization_storage': consent.functional ? 'granted' : 'denied',
+    };
+
+    // Envoyer la mise à jour
+    gtag('consent', 'update', consentUpdate);
+
+    // Log pour debug
+    console.log('Consent Mode updated:', consentUpdate);
+
+    // Push dans dataLayer pour GTM
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': 'consent_update',
+        'consent_analytics': consent.analytics,
+        'consent_marketing': consent.marketing,
+        'consent_functional': consent.functional
+    });
+}
+
+/**
+ * Récupère le consentement stocké
+ */
+function getStoredConsent() {
+    try {
+        const stored = localStorage.getItem(CONSENT_KEY);
+        if (stored) {
+            const data = JSON.parse(stored);
+            if (data.version === CONSENT_VERSION) {
+                return data;
+            }
+        }
+    } catch (e) {
+        console.warn('Cookie consent: Unable to read stored consent');
+    }
+    return null;
+}
+
+/**
+ * Stocke le consentement
+ */
+function storeConsent(consent) {
+    try {
+        const data = {
+            version: CONSENT_VERSION,
+            timestamp: new Date().toISOString(),
+            consent: consent
+        };
+        localStorage.setItem(CONSENT_KEY, JSON.stringify(data));
+        return true;
+    } catch (e) {
+        console.warn('Cookie consent: Unable to store consent');
+        return false;
+    }
+}
+
+/**
+ * Affiche le bandeau
+ */
+function showBanner() {
+    // Inject HTML if not present (Safety check similar to Sprint 3)
+    if (!document.getElementById('cookie-banner')) {
+        injectBannerHTML();
+    }
+
+    const banner = document.getElementById('cookie-banner');
+    if (banner) {
+        banner.classList.add('is-visible');
+        banner.setAttribute('aria-hidden', 'false');
+
+        // Focus pour accessibilité
+        const firstButton = banner.querySelector('button');
+        if (firstButton) {
+            setTimeout(() => firstButton.focus(), 100);
+        }
+    }
+}
+
+/**
+ * Masque le bandeau
+ */
+function hideBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) {
+        banner.classList.remove('is-visible');
+        banner.setAttribute('aria-hidden', 'true');
+    }
+}
+
+/**
+ * Accepter tous les cookies
+ */
+function acceptAll() {
+    const consent = {
+        necessary: true,
+        analytics: true,
+        marketing: true,
+        functional: true
+    };
+
+    if (storeConsent(consent)) {
+        updateGoogleConsent(consent);
+        hideBanner();
+
+        // Event pour tracking
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'cookie_consent_given',
+            'consent_type': 'accept_all'
+        });
+    }
+}
+
+/**
+ * Refuser les cookies non essentiels
+ */
+function rejectAll() {
+    const consent = {
+        necessary: true,
+        analytics: false,
+        marketing: false,
+        functional: false
+    };
+
+    if (storeConsent(consent)) {
+        updateGoogleConsent(consent);
+        hideBanner();
+
+        // Pas de tracking de l'événement car refusé
+        console.log('Cookies rejected - no tracking');
+    }
+}
+
+/**
+ * Appliquer un consentement existant
+ */
+function applyStoredConsent(storedData) {
+    const consent = storedData.consent;
+    updateGoogleConsent(consent);
+    console.log('Applied stored consent:', consent);
+}
+
+/**
+ * Ouvrir les paramètres (version simplifiée)
+ */
+function openSettings() {
+    // Pour le prototype, rediriger vers la page cookies
+    // ou afficher un message
+    const confirmed = confirm(
+        'Personnalisation des cookies :\n\n' +
+        '• Cookies essentiels : toujours actifs\n' +
+        '• Cookies analytics : mesure d\'audience\n' +
+        '• Cookies marketing : publicités personnalisées\n\n' +
+        'Cliquez OK pour accepter uniquement les essentiels,\n' +
+        'ou Annuler pour revenir au bandeau.'
+    );
+
+    if (confirmed) {
+        rejectAll();
+    }
+}
+
+/**
+ * Réinitialiser le consentement
+ */
+export function resetConsent() {
+    localStorage.removeItem(CONSENT_KEY);
+
+    // Réinitialiser Consent Mode à denied
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied'
+        });
+    }
+
+    showBanner();
+    console.log('Consent reset');
+}
+
+/**
+ * Vérifier l'état du consentement
+ */
+export function getConsentState() {
+    const stored = getStoredConsent();
+    if (stored) {
+        return stored.consent;
+    }
+    return null;
+}
+
+/**
+ * Injecte le HTML du bandeau (Helper same as Sprint 3)
  */
 function injectBannerHTML() {
     if (document.getElementById('cookie-banner')) return;
 
     const bannerHTML = `
-<div class="cookie-banner" id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description" aria-hidden="true">
   <div class="cookie-banner__inner">
     <div class="cookie-banner__content">
       <h2 class="cookie-banner__title" id="cookie-title">Gestion des cookies</h2>
@@ -54,138 +272,19 @@ function injectBannerHTML() {
     document.body.insertAdjacentHTML('beforeend', bannerHTML);
 }
 
-
 /**
- * Récupère le consentement stocké
- */
-function getStoredConsent() {
-    try {
-        const stored = localStorage.getItem(CONSENT_KEY);
-        if (stored) {
-            const consent = JSON.parse(stored);
-            // Vérifier la version
-            if (consent.version === CONSENT_VERSION) {
-                return consent;
-            }
-        }
-    } catch (e) {
-        console.warn('Cookie consent: Unable to read stored consent');
-    }
-    return null;
-}
-
-/**
- * Stocke le consentement
- */
-function storeConsent(consent) {
-    try {
-        const data = {
-            version: CONSENT_VERSION,
-            timestamp: new Date().toISOString(),
-            consent: consent,
-        };
-        localStorage.setItem(CONSENT_KEY, JSON.stringify(data));
-    } catch (e) {
-        console.warn('Cookie consent: Unable to store consent');
-    }
-}
-
-/**
- * Affiche le bandeau
- */
-function showBanner() {
-    injectBannerHTML(); // Ensure HTML exists
-    // Add CSS link if not present? ideally main.js imports it or we verify it exists.
-    // Assuming style is updated in main.js or imported via JS.
-    // We'll trust the main CSS imports for now, but really main.js should add the CSS link or we rely on page imports.
-    // Actually, we should add the link tag if we can, but let's assume global CSS import for now via <head> or main.js.
-
-    const banner = document.getElementById('cookie-banner');
-    if (banner) {
-        // Force reflow
-        banner.offsetHeight;
-        banner.classList.add('is-visible');
-        // Focus sur le premier bouton pour accessibilité
-        const firstButton = banner.querySelector('button');
-        if (firstButton) {
-            firstButton.focus();
-        }
-    }
-}
-
-/**
- * Masque le bandeau
- */
-function hideBanner() {
-    const banner = document.getElementById('cookie-banner');
-    if (banner) {
-        banner.classList.remove('is-visible');
-    }
-}
-
-/**
- * Gère l'acceptation de tous les cookies
- */
-function acceptAll() {
-    const consent = {
-        necessary: true,
-        analytics: true,
-        marketing: true,
-    };
-    storeConsent(consent);
-    hideBanner();
-    applyConsent(consent);
-}
-
-/**
- * Gère le refus des cookies non essentiels
- */
-function rejectAll() {
-    const consent = {
-        necessary: true,
-        analytics: false,
-        marketing: false,
-    };
-    storeConsent(consent);
-    hideBanner();
-    applyConsent(consent);
-}
-
-/**
- * Applique le consentement (charge les scripts si autorisé)
- * Note: Implémentation réelle en Sprint 4
- */
-function applyConsent(consent) {
-    console.log('Cookie consent applied:', consent);
-
-    // Sprint 4: Activer GTM/GA4/Pixels selon consentement
-    // if (consent.analytics) {
-    //   loadGoogleAnalytics();
-    // }
-
-    // Dispatch event pour autres scripts
-    window.dispatchEvent(new CustomEvent('cookieConsentUpdated', {
-        detail: consent
-    }));
-}
-
-/**
- * Ouvre les paramètres (placeholder)
- */
-function openSettings() {
-    // Pour le prototype, on accepte uniquement les essentiels
-    alert('Personnalisation des cookies à venir.\n\nPour ce prototype, seuls les cookies essentiels sont utilisés.');
-    rejectAll();
-}
-
-/**
- * Initialise le gestionnaire de consentement
+ * Initialisation du gestionnaire de consentement
  */
 export function initCookieConsent() {
+    // Ensure HTML is there
     injectBannerHTML();
 
+    // Vérifier que le bandeau existe
     const banner = document.getElementById('cookie-banner');
-    if (!banner) return;
+    if (!banner) {
+        console.warn('Cookie banner not found');
+        return;
+    }
 
     // Boutons
     const acceptBtn = document.getElementById('cookie-accept');
@@ -203,20 +302,26 @@ export function initCookieConsent() {
         settingsBtn.addEventListener('click', openSettings);
     }
 
-    // Vérifier si consentement déjà donné
-    const storedConsent = getStoredConsent();
-    if (storedConsent) {
-        // Consentement existant, appliquer sans afficher le bandeau
-        applyConsent(storedConsent.consent);
-    } else {
-        // Pas de consentement, afficher le bandeau
-        // Petit délai pour éviter le flash au chargement
-        setTimeout(showBanner, 500);
-    }
-}
+    // Gestion clavier (Escape pour fermer si déjà choisi)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && banner.classList.contains('is-visible')) {
+            const stored = getStoredConsent();
+            if (stored) {
+                hideBanner();
+            }
+        }
+    });
 
-// Export pour réinitialisation (page cookies.html)
-export function resetConsent() {
-    localStorage.removeItem(CONSENT_KEY);
-    showBanner();
+    // Vérifier le consentement stocké
+    const storedConsent = getStoredConsent();
+
+    if (storedConsent) {
+        // Consentement existant → appliquer
+        applyStoredConsent(storedConsent);
+        console.log('Existing consent applied');
+    } else {
+        // Pas de consentement → afficher bandeau
+        // Petit délai pour éviter le flash
+        setTimeout(showBanner, 300);
+    }
 }

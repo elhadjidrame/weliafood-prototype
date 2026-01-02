@@ -77,9 +77,42 @@
     <link rel="stylesheet" href="/styles/components/forms.css">
     <link rel="stylesheet" href="/styles/components/badges.css">
     <link rel="stylesheet" href="/styles/pages/home.css">
+    <!-- Google Tag Manager -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'environment': 'prototype'
+        });
+        function gtag() { dataLayer.push(arguments); }
+
+        // Default Consent Mode (Denominator)
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+    </script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header class="header">
         <div class="header__container">
             <a href="index.html" class="header__logo">
@@ -93,185 +126,190 @@
                     <li><a href="contact.html" class="header__link">Contact</a></li>
                 </ul>
             </nav>
-            <article class="card card--bordered">
-                <div class="card__image">
-                    <img src="/images/products/product-1.jpg" alt="Nom du produit 1" loading="lazy">
-                </div>
-                <div class="card__content">
-                    <span class="card__category">Catégorie</span>
-                    <h3 class="card__title">
-                        <a href="produit-1.html">Nom du produit 1</a>
-                    </h3>
-                    <p class="card__description">
-                        Description courte du produit. Caractéristiques principales et avantages pour les
-                        professionnels.
-                    </p>
-                    <div class="card__footer">
-                        <span class="card__price">Sur devis</span>
-                        <a href="produit-1.html" class="btn btn--secondary btn--sm">Voir détails</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Product Card 2 -->
-            <article class="card card--bordered">
-                <div class="card__image">
-                    <img src="/images/products/product-2.jpg" alt="Nom du produit 2" loading="lazy">
-                </div>
-                <div class="card__content">
-                    <span class="card__category">Catégorie</span>
-                    <h3 class="card__title">
-                        <a href="produit-2.html">Nom du produit 2</a>
-                    </h3>
-                    <p class="card__description">
-                        Description courte du produit. Caractéristiques principales et avantages pour les
-                        professionnels.
-                    </p>
-                    <div class="card__footer">
-                        <span class="card__price">Sur devis</span>
-                        <a href="produit-2.html" class="btn btn--secondary btn--sm">Voir détails</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Product Card 3 -->
-            <article class="card card--bordered">
-                <div class="card__image">
-                    <img src="/images/products/product-3.jpg" alt="Nom du produit 3" loading="lazy">
-                </div>
-                <div class="card__content">
-                    <span class="card__category">Catégorie</span>
-                    <h3 class="card__title">
-                        <a href="produit-3.html">Nom du produit 3</a>
-                    </h3>
-                    <p class="card__description">
-                        Description courte du produit. Caractéristiques principales et avantages pour les
-                        professionnels.
-                    </p>
-                    <div class="card__footer">
-                        <span class="card__price">Sur devis</span>
-                        <a href="produit-3.html" class="btn btn--secondary btn--sm">Voir détails</a>
-                    </div>
-                </div>
-            </article>
+            <div class="header__actions">
+                <a href="contact.html" class="btn btn--primary btn--sm">Espace Pro (Demo)</a>
+            </div>
         </div>
+    </header>
 
-        <div class="section__footer">
-            <a href="categorie.html" class="btn btn--primary">Voir tous les produits</a>
-        </div>
-        </div>
+    <main class="main">
+        <!-- HERO SECTION -->
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/hero.jpg');">
+            <div class="hero__container">
+                <h1 class="hero__title">L'excellence de l'épicerie fine pour les professionnels</h1>
+                <p class="hero__subtitle">
+                    Sourcez les meilleures huiles d'olive, vinaigres balsamiques et produits d'exception directement
+                    auprès des producteurs.
+                    Tarifs grossiste et service dédié aux restaurateurs.
+                </p>
+                <div class="hero__actions">
+                    <a href="categorie.html" class="btn btn--primary btn--lg">Voir le catalogue</a>
+                    <a href="contact.html" class="btn btn--white btn--lg">Demander un devis</a>
+                </div>
+            </div>
         </section>
 
-        <!-- Why Us Section -->
+        <!-- CATEGORIES -->
         <section class="section">
             <div class="container">
-                <header class="section__header">
-                    <h2 class="section__title">Pourquoi nous choisir ?</h2>
-                </header>
-
+                <div class="section__header">
+                    <h2 class="section__title">Nos univers produits</h2>
+                    <p class="section__subtitle">Une sélection rigoureuse pour votre établissement</p>
+                </div>
                 <div class="grid grid--3">
-                    <div class="feature">
-                        <div class="feature__icon">🚚</div>
-                        <h3 class="feature__title">Livraison rapide</h3>
-                        <p class="feature__description">
-                            Livraison dans toute la France sous 24-48h pour les commandes passées avant 14h.
-                        </p>
-                    </div>
-
-                    <div class="feature">
-                        <div class="feature__icon">✨</div>
-                        <h3 class="feature__title">Qualité premium</h3>
-                        <p class="feature__description">
-                            Produits sélectionnés avec soin auprès de fournisseurs certifiés et contrôlés.
-                        </p>
-                    </div>
-
-                    <div class="feature">
-                        <div class="feature__icon">💬</div>
-                        <h3 class="feature__title">Service dédié</h3>
-                        <p class="feature__description">
-                            Un interlocuteur unique pour répondre à toutes vos questions et besoins spécifiques.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="section section--cta">
-            <div class="container">
-                <div class="cta">
-                    <h2 class="cta__title">Prêt à commander ?</h2>
-                    <p class="cta__description">
-                        Contactez-nous dès maintenant pour obtenir un devis personnalisé adapté à vos besoins.
-                    </p>
-                    <a href="contact.html" class="btn btn--primary btn--lg">Demander un devis</a>
-                </div>
-            </div>
-        </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__grid">
-                    <!-- Company Info -->
-                    <div class="footer__section">
-                        <div class="footer__logo">
-                            <img src="/images/logo.svg" alt="Weliafood" width="40" height="40">
-                            <span>Weliafood</span>
+                    <a href="categorie.html" class="card card--category">
+                        <div class="card__content">
+                            <h3 class="card__title">Huiles d'Olive</h3>
+                            <p>Vierges extra, bio, AOP</p>
                         </div>
-                        <p class="footer__description">
-                            Votre partenaire grossiste alimentaire de confiance. Qualité, service et réactivité au cœur
-                            de notre engagement.
-                        </p>
-                    </div>
-
-                    <!-- Navigation -->
-                    <div class="footer__section">
-                        <h4 class="footer__section-title">Navigation</h4>
-                        <ul class="footer__list">
-                            <li><a href="index.html" class="footer__link">Accueil</a></li>
-                            <li><a href="categorie.html" class="footer__link">Catalogue</a></li>
-                            <li><a href="a-propos.html" class="footer__link">À propos</a></li>
-                            <li><a href="contact.html" class="footer__link">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Legal -->
-                    <div class="footer__section">
-                        <h4 class="footer__section-title">Informations légales</h4>
-                        <ul class="footer__list">
-                            <li><a href="mentions-legales.html" class="footer__link">Mentions légales</a></li>
-                            <li><a href="cgv.html" class="footer__link">CGV</a></li>
-                            <li><a href="confidentialite.html" class="footer__link">Politique de confidentialité</a>
-                            </li>
-                            <li><a href="cookies.html" class="footer__link">Gestion des cookies</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Contact -->
-                    <div class="footer__section">
-                        <h4 class="footer__section-title">Contact</h4>
-                        <address class="footer__contact">
-                            <p>123 Rue du Commerce<br>75001 Paris, France</p>
-                            <p><a href="tel:+33100000000" class="footer__link">01 00 00 00 00</a></p>
-                            <p><a href="mailto:contact@weliafood.com" class="footer__link">contact@weliafood.com</a></p>
-                        </address>
-                    </div>
-                </div>
-
-                <div class="footer__bottom">
-                    <p class="footer__copyright">
-                        © 2026 Weliafood. Tous droits réservés.
-                    </p>
+                    </a>
+                    <a href="categorie.html" class="card card--category">
+                        <div class="card__content">
+                            <h3 class="card__title">Vinaigres</h3>
+                            <p>Balsamiques de Modène, fruits</p>
+                        </div>
+                    </a>
+                    <a href="categorie.html" class="card card--category">
+                        <div class="card__content">
+                            <h3 class="card__title">Épicerie Sèche</h3>
+                            <p>Pâtes artisanales, riz, truffes</p>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </footer>
-        </div>
+        </section>
 
-        <!-- Scripts -->
-        <script type="module" src="/scripts/main.js"></script>
+        <!-- FEATURED PRODUCTS -->
+        <section class="section section--bg-alt">
+            <div class="container">
+                <div class="section__header">
+                    <h2 class="section__title">Produits à la une</h2>
+                    <a href="categorie.html" class="link-arrow">Tout le catalogue</a>
+                </div>
+                <div class="grid grid--3">
+                    <!-- Product 1 -->
+                    <article class="card card--bordered">
+                        <div class="card__image">
+                            <!-- Image path updated -->
+                            <img src="/images/products/product-1.jpg" alt="Huile d'olive extra vierge" loading="lazy">
+                        </div>
+                        <div class="card__content">
+                            <span class="card__category">Huiles</span>
+                            <h3 class="card__title">
+                                <a href="produit-1.html">Huile d'Olive Extra Vierge Premium</a>
+                            </h3>
+                            <p class="card__description">
+                                Origine Italie. Première pression à froid. Fruité vert intense. Bidon 5L pour
+                                restauration.
+                            </p>
+                            <div class="card__footer">
+                                <span class="card__price">Sur devis</span>
+                                <a href="produit-1.html" class="btn btn--secondary btn--sm">Voir détails</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="card card--bordered">
+                        <div class="card__image">
+                            <!-- Image path updated -->
+                            <img src="/images/products/product-2.jpg" alt="Vinaigre Balsamique IGP" loading="lazy">
+                        </div>
+                        <div class="card__content">
+                            <span class="card__category">Vinaigres</span>
+                            <h3 class="card__title">
+                                <a href="produit-2.html">Vinaigre Balsamique de Modène IGP</a>
+                            </h3>
+                            <p class="card__description">
+                                Vieilli 3 ans en fût de chêne. Texture sirupeuse. Idéal dressages et marinades.
+                            </p>
+                            <div class="card__footer">
+                                <span class="card__price">Sur devis</span>
+                                <a href="produit-2.html" class="btn btn--secondary btn--sm">Voir détails</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="card card--bordered">
+                        <div class="card__image">
+                            <!-- Image path updated -->
+                            <img src="/images/products/product-3.jpg" alt="Penne Rigate Bronze" loading="lazy">
+                        </div>
+                        <div class="card__content">
+                            <span class="card__category">Pâtes</span>
+                            <h3 class="card__title">
+                                <a href="produit-3.html">Penne Rigate Bronze Artisanal</a>
+                            </h3>
+                            <p class="card__description">
+                                Semoule de blé dur italien. Tréfilage au bronze pour une texture parfaite. Cuisson 11
+                                min.
+                            </p>
+                            <div class="card__footer">
+                                <span class="card__price">Sur devis</span>
+                                <a href="produit-3.html" class="btn btn--secondary btn--sm">Voir détails</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- REASSURANCE -->
+        <section class="section">
+            <div class="container">
+                <div class="grid grid--3 text-center">
+                    <div class="feature">
+                        <div class="feature__icon">📦</div>
+                        <h3 class="feature__title">Tarifs de Gros</h3>
+                        <p>Prix dégressifs selon volumes.</p>
+                    </div>
+                    <div class="feature__icon">🚚</div>
+                    <h3 class="feature__title">Livraison Rapide</h3>
+                    <p>Sous 48/72h partout en France.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__col">
+                <a href="index.html" class="footer__logo">WeliaFood.</a>
+                <p>Votre partenaire de confiance pour le sourcing alimentaire.</p>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Navigation</h4>
+                <ul class="footer__links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="categorie.html">Catalogue</a></li>
+                    <li><a href="a-propos.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Légal</h4>
+                <ul class="footer__links">
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv.html">CGV</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__title">Contact</h4>
+                <p>contact@weliafood.com</p>
+                <p>+33 1 23 45 67 89</p>
+                <p>123 Rue du Commerce, 75001 Paris</p>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copyright">© 2026 Weliafood. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/scripts/main.js"></script>
 </body>
 
 </html>
