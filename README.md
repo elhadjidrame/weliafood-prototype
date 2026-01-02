@@ -45,7 +45,7 @@ Les composants sont dans `src/styles/components/`.
 
 ## 🔗 URLs
 
-- **Production** : https://[username].github.io/weliafood-prototype/
+- **Production** : https://elhadjidrame.github.io/weliafood-prototype/
 - **Référence** : https://weliafood.com/
 
 ## 📋 Scripts disponibles
